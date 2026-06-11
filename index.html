@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Japanese World</title>
-  <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
-
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>document</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
   <!-- ══ COMPONENTES — ANTES DE <a-scene> ══ -->
   <script>
     var JOY_R     = 37;
@@ -129,210 +129,50 @@
 
   <!-- ══════════ ESCENA A-FRAME ══════════ -->
   <a-scene vr-mode-ui="enabled: true">
+    <!--camara-->
+		
+		<a-camera position="0 1.6 0" wasd-controls look-controls="enabled: true; touchEnabled: true; reverseTouchDrag: false"><a-cursor></a-cursor></a-camera>
+		
+    <!--modelos 3d-->
 
-    <a-entity sound="src: url(musica.mp3); autoplay: true; loop: true; volume: 0.5"></a-entity>
+<!--===============CASAS==================-->
+<a-gltf-model src="casa_opt.glb" id="casa1" position="2 1 0 " scale="0.02 0.02 0.02" rotation="0 180 0"></a-gltf-model>
+<a-gltf-model src="tienda_opt.glb" id="super" position="4 0 -6 " scale="0.004 0.004 0.004" rotation="0 60 0 "></a-gltf-model>
+<a-gltf-model src="casa verde_opt.glb" id="mi casa" position="4 0 3 " scale="0.1 0.1 0.1" rotation="0 130 0"></a-gltf-model>
+<a-gltf-model src="casa nieve_opt.glb" id="nieve casa" position="5 0 5 " scale="0.3 0.3 0.3" rotation="0 130 0"></a-gltf-model>
 
-    <!-- PRIMITIVAS -->
-    <a-plane
-      position="0 0 -4"
-      scale="500 500 500"
-      rotation="-90 0 0"
-      width="4" height="4"
-      color="#3B5110">
-    </a-plane>
+<a-gltf-model src="arbol_opt.glb" id="arbol1" position="-17 0 -22 " scale="0.6 0.6 0.6" rotation="0 130 0"></a-gltf-model>
+<a-gltf-model src="arbol_opt.glb" id="arbol2" position="-10 -0.29655 -19.37875" scale="0.6 0.6 0.6" rotation="0 130 0"></a-gltf-model>
+<a-gltf-model src="arbol_opt.glb" id="arbol3" position="-6 -0.32477 -27.94113" scale="0.6 0.6 0.6" rotation="0 130 0"></a-gltf-model>
+<a-gltf-model src="montain_opt.glb" id="montaña" position="-5 5 -5 " scale="7 7 7" rotation="0 80 0"></a-gltf-model>
+		<!--meme-->
+<a-gltf-model 
+  src="pepe_opt.glb" id="meme" position="2 4 4" scale="11 11 11" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 500; easing: linear" sound="src: #musica; on:mouseenter ">
+</a-gltf-model>
+		
+<a-assets> <a-sound id="musica" src="cancion.mp3"></a-sound></a-assets>
 
-    <a-light type="ambient" color="#AFEEEE"></a-light>
+		<!--===============SUELO==================-->
 
-    <a-cylinder
-      position="40 10 -5"
-      scale="0.5 21 0.5"
-      color="brown"
-      event-set__enter="_event: mouseenter; _target: #flag; visible: true"
-      event-set__leave="_event: mouseleave; _target: #flag; visible: false">
-      <a-box
-        id="flag"
-        src="https://i.ibb.co/LdHDh4Y9/images.png"
-        color="#FFFFFF"
-        visible="false"
-        position="0 0.35 8"
-        scale="15 0.3 -0,5"
-        rotation="0 85 0">
-      </a-box>
-    </a-cylinder>
+<a-gltf-model src="suelo_opt.glb" id="suelo" position="0 -0.1 0 " scale="0.01 0.01 0.01" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 1000000; easing: linear" ></a-gltf-model>
 
-    <!-- EDIFICIOS -->
-    <a-gltf-model id="templo"
-      src="https://cdn.tinyglb.com/models/4a2392a6fa04477493b9015416cf0571.glb"
-      alt="templo" position="0 0 -40" scale="0.01 0.01 0.01" rotation="0 0 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/26df246b648249448a9a85552e3e07bd.glb"
-      alt="puerta tori" position="0 0 -15" scale="14 14 14">
-      <a-light type="directional" position="5 10 5" intensity="1" color="#ffffff"></a-light>
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/c728a8c818a148aeab0f867e2e917b66.glb"
-      alt="tienda" position="-30 0 5" scale="1 1 1" rotation="0 90 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/5fb5871d0e6b46868efd2a1f92bc8704.glb"
-      alt="casita" position="-30 0 -20" scale="1.5 1.5 1.5" rotation="0 55 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/783d20c383b14c77a3c02175dfe4d5ea.glb"
-      alt="cascada" position="40 9 -28" scale="0.1 0.1 0.1" rotation="0 -62 0">
-    </a-gltf-model>
-
-    <!-- PAISAJE -->
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/262ef18899b449b798df4de8d079b5e2.glb"
-      alt="cielo" position="30 0 -49" scale="40 40 40" rotation="0 90 0"
-      animation="property: rotation; to: 0 360 0; loop: true; dur: 700000; easing: linear">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/8719c13ab9a5456c9e80ba55cc33ef31.glb"
-      alt="mountain" position="100 0 -300" scale="200 200 200" rotation="0 -180 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/8719c13ab9a5456c9e80ba55cc33ef31.glb"
-      alt="mountain" position="-100 0 -300" scale="200 200 200" rotation="0 180 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/24124bd7335c44d29df2e26928cff98c.glb"
-      alt="cerezoD" position="-20 0 -40" scale="40 40 40"
-      event-set__enter="_event: mouseenter; _target: #petalos; visible: true"
-      event-set__leave="_event: mouseleave; _target: #petalos; visible: false">
-    </a-gltf-model>
-
-    <a-entity id="petalos" visible="false">
-      <a-plane position="-20 8 -40" width="0.3" height="0.15" color="#ffc0cb"
-        rotation="0 0 35" opacity="0.8"
-        animation="property: position; to: -18 0 -41; dur: 5000; loop: true">
-      </a-plane>
-      <a-plane position="-21 9 -39" width="0.25" height="0.12" color="#ffb6c1"
-        rotation="0 0 -20" opacity="0.7"
-        animation="property: position; to: -22 0 -42; dur: 6500; loop: true">
-      </a-plane>
-      <a-plane position="-19 7 -41" width="0.2" height="0.1" color="#ffd1dc"
-        rotation="0 0 60" opacity="0.6"
-        animation="property: position; to: -17 0 -39; dur: 4500; loop: true">
-      </a-plane>
-      <a-plane position="-20 10 -40" width="0.28" height="0.14" color="#ffc0cb"
-        rotation="0 0 -45" opacity="0.75"
-        animation="property: position; to: -23 0 -43; dur: 7000; loop: true">
-      </a-plane>
-    </a-entity>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/24124bd7335c44d29df2e26928cff98c.glb"
-      alt="cerezoI" position="20 0 -50" scale="40 40 40">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/24124bd7335c44d29df2e26928cff98c.glb"
-      alt="cerezoI2" position="30 0 -49" scale="40 40 40" rotation="0 90 0">
-    </a-gltf-model>
-
-    <!-- PLANTAS -->
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/3751678cfd104f9887a0879e7d3f6bb2.glb"
-      alt="floresI" position="-20 0 -40" scale="2 2 2">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/3751678cfd104f9887a0879e7d3f6bb2.glb"
-      alt="floresD" position="20 0 -50" scale="2 2 2" rotation="0 90 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/417f89856d584515bc1882e1a658c3b2.glb"
-      alt="grassI" position="-4 0 -28" scale="0.15 0.15 0.15">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/417f89856d584515bc1882e1a658c3b2.glb"
-      alt="grassD" position="4 0 -28" scale="0.15 0.15 0.15" rotation="0 180 0">
-    </a-gltf-model>
-
-    <!-- DECORACION -->
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/290528bf459c4c4abb680d2d6593fb88.glb"
-      alt="buda" position="23 0 -45" scale="0.5 0.5 0.5" rotation="0 -15 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/f611c22f5f0a48aa99333f388df8b12a.glb"
-      alt="farolillosD" position="4 0 -10" scale="1.5 1.5 1.5" rotation="0 -90 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/f611c22f5f0a48aa99333f388df8b12a.glb"
-      alt="farolillosI" position="-4 0 -10" scale="1.5 1.5 1.5" rotation="0 -90 0">
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/b9e81d602f284278b65ff93dd703aecb.glb"
-      alt="farol1" position="18 0 -48" scale="0.02 0.02 0.02">
-      <a-light type="point" position="18 0 -45" color="#ffb347" intensity="5" distance="15"></a-light>
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/b9e81d602f284278b65ff93dd703aecb.glb"
-      alt="farol2" position="30 0 -45" scale="0.02 0.02 0.02">
-      <a-light type="point" position="18 0 -45" color="#ffb347" intensity="5" distance="15"></a-light>
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/b9e81d602f284278b65ff93dd703aecb.glb"
-      alt="farol3" position="-15 0 -35" scale="0.02 0.02 0.02">
-      <a-light type="point" position="18 0 -45" color="#ffb347" intensity="5" distance="15"></a-light>
-    </a-gltf-model>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/54b114fb59464f7a9f1dcbe083fbbd0e.glb"
-      alt="pozo" position="38 0 -37.5" scale="3 3 3" rotation="0 100 0"
-      event-set__enter="_event: mouseenter; _target: #mensajePozo; visible: true"
-      event-set__leave="_event: mouseleave; _target: #mensajePozo; visible: false">
-    </a-gltf-model>
-
-    <a-text
-      id="mensajePozo"
-      value="静かな心は水のよう&#10;Shizukana kokoro wa mizu no you&#10;&#10;A calm heart is like water"
-      position="34 6 -37.5" rotation="0 -70 0"
-      anchor="center" color="#ffd7f1" width="20" opacity="0.85" visible="false" shader="msdf"
-      animation="property: position; dir: alternate; dur: 2000; loop: true; to: 34 6.5 -37.5">
-    </a-text>
-
-    <a-light type="point" position="38 5 -37.5" color="#ffb7e8" intensity="1" distance="10"></a-light>
-
-    <a-gltf-model
-      src="https://cdn.tinyglb.com/models/a66f326b06a84414b377269da9d6d355.glb"
-      alt="samurai" position="-20 6.7 -28" scale="0.004 0.004 0.004" rotation="0 -45 0">
-    </a-gltf-model>
-
-    <!-- PORTAL -->
-    <a-link id="miEnlace1"
-      href="https://carlatienzam-byte.github.io/EPE-IESCarmen-de-Burgos-Segui/"
-      title="Backrooms"
-      position="45.98677 3 19.12085"
-      scale="2 2 2"
-      geometry="primitive: circle; segments: 64"
-      material="shader: portal; side: double; previewDistance: 45"
-      rotation="-2.9808566206240967 -90 0"
-      class="portal"
-      data-url="https://carlatienzam-byte.github.io/EPE-IESCarmen-de-Burgos-Segui/">
-      <a-entity text="align: center; color: white; font: kelsonsans; value: Backrooms; width: 5"
-                position="0 1.5 0" rotation="0 180 0"></a-entity>
-    </a-link>
-
-    <!-- CÁMARA -->
+  <!-- cielo girando lento -->
+  <a-gltf-model 
+    src="sky_opt.glb" id="cielo" position="0 0 0" scale="1 1 1" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000; easing: linear">
+  </a-gltf-model>
+		
+		
+		<!--cartel-->
+		
+		
+<a-box position="2 3 4" rotation="90 90 90" height="1.5" color="black" event-set__enter="_event: mouseenter; _target: #boxText; visible: true" event-set__leave="_event: mouseleave; _target: #boxText; visible: false">
+ <a-text id="boxText" value="Estatua del dios supremo" align="center" color="BLACK" visible="true" rotation="0 90 -90" position="1.5 -0.8 0" geometry="primitive: plane; width: 3" material="white"
+ ></a-text></a-box>
+	   
+	   
+	   <a-link id="miEnlace1" href="https://carlatienzam-byte.github.io/EPE-IESCarmen-de-Burgos-Segui/" title="Backrooms" position="-6.29221 1.88346 4.77171" scale="0.5 0.5 0.5" geometry="primitive: circle; segments: 64" material="shader: portal; side: double; previewDistance: 7.5"><a-entity text="align: center; color: white; font: kelsonsans; value: Backrooms; width: 5" position="0 1.5 0" rotation="0 180 0"></a-entity></a-link>
+		  
+	 <!-- CÁMARA -->
     <a-entity id="rig" position="0 0 0" mobile-movement>
       <a-camera id="camera"
         position="0 1.6 0"
@@ -343,9 +183,17 @@
       </a-camera>
     </a-entity>
 
-  </a-scene>
+    </a-scene>
+	  
+	<script>
+		  
+document.querySelector('#miEnlace1').addEventListener('click', function () {
+    window.location.href ='https://carlatienzam-byte.github.io/EPE-IESCarmen-de-Burgos-Segui/';
+});
+		  
+	
 
-  <script>
+ 
     /* ── JOYSTICK ── */
     var joyBase  = document.getElementById('joy-base');
     var joyThumb = document.getElementById('joy-thumb');
@@ -449,6 +297,6 @@
     document.addEventListener('touchstart', unlockAudio, { once: true, passive: true });
     document.addEventListener('click',      unlockAudio, { once: true });
   </script>
-
-</body>
+	
+  </body>
 </html>
