@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>document</title>
   <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  <!-- Colisiones con los modelos GLB (archivos locales del repo) -->
+  <script src="three-mesh-bvh.min.js"></script>
+  <script src="colisiones.js"></script>
   <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
 
@@ -170,7 +173,7 @@
     <a-gltf-model src="arbol_opt.glb" id="arbol1" position="-17 0 -22"              scale="0.6 0.6 0.6" rotation="0 130 0"></a-gltf-model>
     <a-gltf-model src="arbol_opt.glb" id="arbol2" position="-10 -0.29655 -19.37875" scale="0.6 0.6 0.6" rotation="0 130 0"></a-gltf-model>
     <a-gltf-model src="arbol_opt.glb" id="arbol3" position="-6 -0.32477 -27.94113"  scale="0.6 0.6 0.6" rotation="0 130 0"></a-gltf-model>
-    <a-gltf-model src="montain_opt.glb" id="montaña" position="-5 5 -5"             scale="7 7 7" rotation="0 80 0"></a-gltf-model>
+    <a-gltf-model src="montain_opt.glb" id="montaña" sin-colision position="-5 5 -5"             scale="7 7 7" rotation="0 80 0"></a-gltf-model>
 
     <!-- MEME -->
     <a-gltf-model src="pepe_opt.glb" id="meme"
@@ -216,7 +219,7 @@
     </a-link>
 
     <!-- CÁMARA -->
-    <a-entity id="rig" position="0 0 0" mobile-movement>
+    <a-entity id="rig" colision-malla position="0 0 0" mobile-movement>
       <a-camera id="camera"
         position="0 1.6 0"
         camera="userHeight: 0"
